@@ -13,7 +13,7 @@ if not success:
 # Database configuration
 DATABASE_URL = os.environ.get(
     "DATABASE_URL",
-    "postgresql+psycopg://postgres:postgres@localhost:5432/photos",
+    "postgresql+psycopg://postgres:postgres@localhost:5432/nomadia",
 )
 
 # S3 configuration

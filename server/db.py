@@ -4,6 +4,7 @@ from secrets import token_urlsafe
 import bcrypt
 from datetime import datetime, timedelta
 from db_models import DBTrip, DBDay, DBJournal, DBPlace, DBAccount, Base, DBPhoto
+from config import DATABASE_URL
 from schemas import (
     TripCreate,
     TripOut,
@@ -18,7 +19,6 @@ from schemas import (
     PhotoOut,
 )
 
-DATABASE_URL = "postgresql+psycopg://postgres:postgres@localhost:5432/nomadia"
 SESSION_LIFE_MINUTES = 60
 
 engine = create_engine(DATABASE_URL)
