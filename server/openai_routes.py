@@ -17,18 +17,16 @@ from geocoding_route import get_coordinates_from_google
 router = APIRouter()
 load_dotenv(dotenv_path="openai.env")
 load_dotenv(dotenv_path="aws.env")
-print("OPENAI_KEY:", os.getenv("OPENAI_API_KEY"))
-print("AWS_BUCKET:", os.getenv("S3_BUCKET"))
+load_dotenv(dotenv_path="unsplash.env")
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
-# Unsplash access
-UNSPLASH_ACCESS_KEY = "Z4DkN0O_JWRUM8gTCPZfZqoxV-e7_iTnZDIz11jXz5w"
-
 
 # S3 setup
 S3_BUCKET = os.getenv("S3_BUCKET")
 S3_REGION = os.getenv("AWS_REGION")
+
+# Unsplash setup
+UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
 
 s3 = boto3.client(
     "s3",

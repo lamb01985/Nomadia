@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './DayView.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import BASE_URL from "./config.js"
 
 
 const DayView = () => {
@@ -24,7 +25,7 @@ const DayView = () => {
  useEffect(() => {
    const fetchDay = async () => {
      try {
-       const res = await fetch(`http://127.0.0.1:8000/api/days/${dayId}`);
+       const res = await fetch(`${BASE_URL}/api/days/${dayId}`);
        const data = await res.json();
        setDay(data);
      } catch (err) {
@@ -96,7 +97,7 @@ const DayView = () => {
 
 
    try {
-     const res = await fetch(`http://localhost:8000/api/days/${dayId}/journal`, {
+     const res = await fetch(`${BASE_URL}/api/days/${dayId}/journal`, {
        method: 'POST',
        body: formData,
      });
@@ -111,7 +112,7 @@ const DayView = () => {
          photoForm.append('photo', photos[i]);
 
 
-         await fetch(`http://localhost:8000/api/days/${dayId}/photos`, {
+         await fetch(`${BASE_URL}/api/days/${dayId}/photos`, {
            method: 'POST',
            body: photoForm,
          });

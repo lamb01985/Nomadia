@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useAuth } from '../context/AuthContext.jsx';
 import ReactDOM from "react-dom";
 import './NavBar.css';
+import BASE_URL from "../config.js"
 
-const API_BASE = "http://localhost:8000";
 
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -14,7 +14,7 @@ function Navbar() {
   const {user} =useAuth();
 
     const handleLogout = async () => {
-    const response = await fetch(`${API_BASE}/api/logout`, { credentials: 'include' });
+    const response = await fetch(`${BASE_URL}/api/logout`, { credentials: 'include' });
     if (!response.ok) {
       alert('Failed to logout');
       return;

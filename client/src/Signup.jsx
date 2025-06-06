@@ -4,8 +4,7 @@ import { useAuth } from './context/AuthContext';
 import { useNavigate } from "react-router-dom";
 import { StyledEngineProvider } from '@mui/material/styles';
 import App from "./components/SignupForm";
-
-const API_BASE = "http://localhost:8000";
+import BASE_URL from "./config.js"
 
 
 /**
@@ -36,7 +35,7 @@ export default function Signup() {
   }
 
     try {
-    const res = await fetch(`${API_BASE}/api/signup`, {
+    const res = await fetch(`${BASE_URL}/api/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

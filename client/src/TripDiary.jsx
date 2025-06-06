@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import './TripDiary.css';
+import BASE_URL from "./config.js"
 
 const fallbackImage = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=400&h=300";
 
@@ -16,13 +17,13 @@ const TripDiary = () => {
     const fetchData = async () => {
       try {
         const [daysRes, journalsRes, tripRes] = await Promise.all([
-          fetch(`http://localhost:8000/api/${tripId}/days`, {
+          fetch(`${BASE_URL}/api/${tripId}/days`, {
             credentials: 'include'
           }),
-          fetch(`http://localhost:8000/api/trips/${tripId}/journals`, {
+          fetch(`${BASE_URL}/api/trips/${tripId}/journals`, {
             credentials: 'include'
           }),
-          fetch(`http://localhost:8000/api/trips/${tripId}`, {
+          fetch(`${BASE_URL}/api/trips/${tripId}`, {
             credentials: 'include'
           })
         ]);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TripDashboard.css';
 import { Surfing } from '@mui/icons-material';
+import BASE_URL from "./config.js"
 
 const vibeIcons = {
   romantic: '❤️',
@@ -40,7 +41,7 @@ const TripDashboard = () => {
 
   useEffect(() => {
     const fetchTrips = async () => {
-      const res = await fetch('http://localhost:8000/api/trips', {
+      const res = await fetch(`${BASE_URL}/api/trips`, {
         credentials: 'include',
       });
       const data = await res.json();
@@ -80,7 +81,7 @@ const TripDashboard = () => {
               if (!confirmDelete) return;
 
               try {
-                const res = await fetch(`http://localhost:8000/api/trips/${item.id}`, {
+                const res = await fetch(`${BASE_URL}/api/trips/${item.id}`, {
                   method: 'DELETE',
                   credentials: 'include',
                 });

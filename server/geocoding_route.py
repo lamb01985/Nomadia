@@ -4,7 +4,7 @@ import os
 
 load_dotenv(dotenv_path="geocoding.env")
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_API_KEY_GEO = os.getenv("GOOGLE_API_KEY_GEO")
 
 
 async def get_coordinates_from_google(
@@ -18,7 +18,7 @@ async def get_coordinates_from_google(
     url = "https://maps.googleapis.com/maps/api/geocode/json"
     params = {
         "address": query,
-        "key": GOOGLE_API_KEY,
+        "key": GOOGLE_API_KEY_GEO,
         "components": f"locality: {destination}",
     }
 

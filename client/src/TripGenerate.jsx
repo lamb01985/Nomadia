@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./TripGenerate.css";
 import WeatherForecast from "./components/WeatherForecast";
 import Loading from "./components/Loading";
+import BASE_URL from "./config.js"
 
 const TripGenerate = () => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const TripGenerate = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:8000/api/itinerary", {
+      const response = await fetch(`${BASE_URL}/api/itinerary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -86,7 +87,7 @@ const TripGenerate = () => {
 
     const fetchImage = async () => {
       try {
-        const imageResponse = await fetch(`http://localhost:8000/api/cover-photo?destination=${trip.destination}&vibe=${trip.vibe}`)
+        const imageResponse = await fetch(`${BASE_URL}/api/cover-photo?destination=${trip.destination}&vibe=${trip.vibe}`)
         const imageData = await imageResponse.json()
         if (imageData.cover_photo) {
           setTrip(prev => ({ ...prev, cover_photo: imageData.cover_photo }))
@@ -146,7 +147,7 @@ const TripGenerate = () => {
 
 
     try {
-      const response = await fetch("http://localhost:8000/api/save/itinerary", {
+      const response = await fetch(`${BASE_URL}/api/save/itinerary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

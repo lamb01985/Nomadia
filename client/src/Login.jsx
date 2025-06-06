@@ -3,7 +3,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import { useAuth } from './context/AuthContext';
 import { useNavigate } from "react-router-dom";
 import App from './components/LoginForm';
-const API_BASE = "http://localhost:8000";
+import { BASE_URL } from './config';
 
 /**
  * Login page component. Handles login form submission using useAuth.
@@ -26,7 +26,7 @@ export default function Login() {
     const password = formData.get("password");
 
     try {
-    const res = await fetch(`${API_BASE}/api/login`, { // API_BASE is defined here
+    const res = await fetch(`${BASE_URL}/api/login`, { // API_BASE is defined here
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

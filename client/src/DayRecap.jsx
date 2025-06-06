@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./DayRecap.css";
 import { BookOpen, MapPin, Tag, Image, Edit } from "lucide-react";
+import {BASE_URL} from "./config.js"
+
 
 const DayRecap = () => {
   const { id: dayId } = useParams();
@@ -18,13 +20,13 @@ const DayRecap = () => {
   useEffect(() => {
     const fetchJournal = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/days/${dayId}/recap`);
+        const response = await fetch(`${BASE_URL}/api/days/${dayId}/recap`);
         const data = await response.json();
         setJournal(data.journal);
         setDay(data.day);
         setPlaces(data.places);
 
-        const photoRes = await fetch(`http://localhost:8000/api/days/${dayId}/photos`);
+        const photoRes = await fetch(`${BASE_URL}/api/days/${dayId}/photos`);
         const photoData = await photoRes.json();
         setPhotos(photoData);
       } catch (err) {
@@ -63,20 +65,20 @@ const DayRecap = () => {
     for (const file of filteredFiles) {
       const photoForm = new FormData();
       photoForm.append('photo', file);
-      await fetch(`http://localhost:8000/api/days/${dayId}/photos`, {
+      await fetch(`${BASE_URL}/api/days/${dayId}/photos`, {
         method: 'POST',
         body: photoForm,
       });
     }
 
-    const photoRes = await fetch(`http://localhost:8000/api/days/${dayId}/photos`);
+    const photoRes = await fetch(`${BASE_URL}/api/days/${dayId}/photos`);
     const photoData = await photoRes.json();
     setPhotos(photoData);
   };
 
   const removePhoto = async (photoId) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/photos/${photoId}`, {
+      const res = await fetch(`${BASE_URL}/api/photos/${photoId}`, {
         method: 'DELETE',
       });
       if (!res.ok) {
@@ -100,7 +102,7 @@ const DayRecap = () => {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:8000/api/journal/${dayId}`, {
+      const res = await fetch(`${BASE_URL}/api/journal/${dayId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -124,7 +126,7 @@ const DayRecap = () => {
         id: places[i]?.id,
         name
       }))) {
-        await fetch(`http://localhost:8000/api/places/${place.id}`, {
+        await fetch(`${BASE_URL}/api/places/${place.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name: place.name })

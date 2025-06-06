@@ -3,6 +3,9 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import './TripSummary.css';
 import WeatherForecast from "./components/WeatherForecast";
 import GoogleMapComponent from './components/GoogleMap';
+import BASE_URL from "./config.js"
+
+
 
 const TripSummary = () => {
   const { id } = useParams();
@@ -18,14 +21,14 @@ const TripSummary = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const tripRes = await fetch(`http://localhost:8000/api/trips/${id}`, {
+        const tripRes = await fetch(`${BASE_URL}/api/trips/${id}`, {
           credentials: 'include'
         });
         if (!tripRes.ok) throw new Error('Failed to fetch trip');
         const tripData = await tripRes.json();
         setTrip(tripData);
 
-        const daysRes = await fetch(`http://localhost:8000/api/${id}/days`, {
+        const daysRes = await fetch(`${BASE_URL}/api/${id}/days`, {
           credentials: 'include'
         });
         if (!daysRes.ok) throw new Error('Failed to fetch trip days');
@@ -48,7 +51,7 @@ const TripSummary = () => {
 
   const handleDayClick = async (dayId) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/days/${dayId}/map`, {
+      const res = await fetch(`${BASE_URL}/api/days/${dayId}/map`, {
         credentials: 'include'
       });
       if (!res.ok) throw new Error('Failed to fetch map data');
@@ -101,7 +104,7 @@ const TripSummary = () => {
             src={
               trip.cover_photo.startsWith('http')
                 ? trip.cover_photo
-                : `http://localhost:8000${trip.cover_photo.startsWith('/') ? '' : '/'}${trip.cover_photo}`
+                : `${BASE_URL}${trip.cover_photo.startsWith('/') ? '' : '/'}${trip.cover_photo}`
             }
             alt="Trip Cover"
           />
