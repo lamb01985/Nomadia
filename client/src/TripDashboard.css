@@ -1,0 +1,170 @@
+body {
+ margin: 0;
+ font-family: georgia, 'Helvetica Neue', sans-serif;
+ background-color: #fff5ee;
+ max-width: 100%;
+}
+@media screen and (min-width: 700px) {
+ .app-header {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+}
+@media screen and (max-width: 700px) {
+ .app-header {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+}
+
+
+
+
+.app-title {
+ font-size: 1.5rem;
+ font-weight: bold;
+}
+
+
+.trip-page-title {
+ text-align: center;
+ font-weight: bold;
+ margin-bottom: 1.5%;
+}
+
+
+.page-title2 {
+ text-align: center;
+ font-weight: bold;
+ margin-bottom: 1.5%;
+ margin-left: 5%;
+ margin-right: 5%;
+}
+
+
+.dashboard-container {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 1.5rem;
+ padding: 1rem;
+ max-width: 1200px;
+ margin: 0 auto;
+}
+
+
+.trip-card {
+ position: relative;
+ width: 350px;
+ /* height: 230px; */
+ overflow: hidden;
+ border-radius: 10px;
+ box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+ cursor: pointer;
+ transition: transform 0.2s ease-in-out;
+ background-color: #000;
+}
+
+
+.trip-card:hover {
+ transform: scale(1.03);
+}
+
+
+.trip-image {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+
+
+.trip-overlay {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+ padding: 0.75rem;
+ background: linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.62) 60%, rgba(255, 255, 255, 0) 100%);  color: white;
+ text-align: left;
+}
+
+
+.trip-title {
+ margin: 0;
+ font-size: 1.1rem;
+ font-weight: bold;
+}
+
+
+.trip-date {
+ margin: 0.25rem 0 0;
+ font-size: 0.85rem;
+ opacity: 0.9;
+}
+
+
+.trip-vibe {
+ margin: 0.25rem 0;
+ font-size: 0.85rem;
+ opacity: 0.9;
+}
+
+
+.trip-destination {
+ margin: 0;
+ font-size: 0.8rem;
+ opacity: 0.75;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+ .dashboard-container {
+   flex-direction: column;
+   align-items: center;
+   padding: 0.5rem;
+ }
+
+
+ .trip-card {
+   width: 90%;
+   height: auto;
+   aspect-ratio: 3 / 2;
+   border-radius: 12px;
+ }
+
+
+ .trip-image {
+   height: 100%;
+ }
+}
+
+
+.delete-button {
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ background: rgba(0, 0, 0, 0.6);
+ border: none;
+ border-radius: 50%;
+ padding: 6px;
+ cursor: pointer;
+ z-index: 10;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: background 0.3s ease;
+}
+
+
+.delete-button:hover {
+ background: #c1542b;
+}
+
+
+.icon-x-mark {
+ width: 16px;
+ height: 16px;
+ color: white;
+}

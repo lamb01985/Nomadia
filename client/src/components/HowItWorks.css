@@ -1,0 +1,91 @@
+.section {
+  padding: 5rem 0;
+  background: linear-gradient(to bottom, white, rgb(51 87 98 / 85%));
+  border-radius: 10px;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(21, 94, 117);
+  margin-bottom: 1.5rem;
+}
+
+.orangeicon{
+    color:#e76b45;
+}
+@media (min-width: 768px) {
+  .title {
+    font-size: 3.75rem;
+  }
+}
+
+.description {
+  font-size: 1.25rem;
+  color: rgb(75, 85, 99);
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.step {
+  text-align: center;
+}
+
+.iconContainer {
+  background: white;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.step:hover .iconContainer {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  /* color: rgb(21, 94, 117); */
+  color: rgb(18 92 93);
+  margin-bottom: 1rem;
+}
+
+.stepDescription {
+  color: rgb(208, 216, 228);
+  line-height: 1.625;
+}

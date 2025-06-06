@@ -1,0 +1,88 @@
+/* index.css */
+
+:root {
+  font-family: Georgia, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Light mode defaults */
+  color: #222;
+  background-color: #fff7f1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff7f1;
+  font-family: inherit;
+}
+
+a {
+  font-weight: 500;
+  color: #f87f5a;
+  text-decoration: none;
+}
+a:hover {
+  color: #e76b45;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  color: #156E75;
+  margin: 0 0 1rem 0;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: Georgia, serif;
+  margin: 0 0 1rem 0;
+}
+
+.page-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #156E75;
+  margin: 0 0 1.5rem 0;
+  font-family: Georgia, serif;
+}
+
+button {
+  border-radius: 8px;
+  border: none;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f87f5a;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+button:hover {
+  background-color: #e76b45;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid #e76b45;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #222;
+    background-color: #fff7f1;
+  }
+
+  body {
+    background-color: #fff7f1;
+  }
+}
+
+.signup-login-nav {
+  color: #e76b45;
+}

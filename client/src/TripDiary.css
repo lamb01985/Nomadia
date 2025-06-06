@@ -1,0 +1,197 @@
+.trip-highlights-container {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 2% 2% 2%;
+  margin-top: 24px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.trip-journal-subheading {
+  text-align: center;
+  color: #156e75;
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+  font-family: 'Georgia', serif;
+}
+
+/* Paper-style container */
+.highlight-page {
+  background-image: url("/Paper-5.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  background-color: #fdfdfb;
+
+  width: calc(100% - 200px); /* 100px margin on each side */
+  max-width: 1150px;
+  min-width: 320px; /* prevent shrinking too small */
+  margin: 0 auto 4rem auto; /* top: 0, sides: auto-center, bottom: 4rem */
+  padding: 20px;
+  min-height: 80vh;
+
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 40px;
+}
+
+.highlight-card {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease-in-out;
+}
+
+.highlight-card:hover {
+  transform: scale(1.02);
+}
+
+.highlight-image {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.highlight-overlay {
+  position: relative;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 0.95rem;
+  z-index: 20;
+}
+
+.highlight-overlay h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.highlight-overlay p {
+  margin: 2px 0;
+}
+
+.journal-status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #333;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.journal-status.has-entry {
+  background-color: rgba(39, 174, 96, 0.95);
+  color: white;
+}
+
+.trip-journal-hint {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+/* Dropdown Section */
+.add-entry-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 0.25rem;
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.add-entry-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.add-journal-dropdown {
+  display: inline-block;
+  width: 60%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.95);
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(236, 111, 79, 0.08);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-left: 0.5rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.add-journal-dropdown:focus {
+  border-color: #156E75;
+  box-shadow: 0 0 0 2px rgba(236, 111, 79, 0.15);
+}
+
+option {
+  background: #fff;
+}
+
+.back-button {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  padding: 8px 16px;
+  background-color: #ec6f4f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #d85c3c;
+}

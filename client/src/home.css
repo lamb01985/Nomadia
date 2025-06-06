@@ -1,0 +1,106 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Georgia', sans-serif;
+  background-color: #fff7f2;
+}
+
+.hero-image-section {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* This makes it stationary */
+}
+
+.hero-title{
+  color:white;
+}
+
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 1%;
+}
+@media screen and (min-width: 400px) {
+  .hero-overlay h1 {
+    font-size: 5rem;
+    margin-bottom: 2%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .hero-overlay h1 {
+    font-size: 4rem;
+    margin-bottom: 2%;
+  }
+}
+
+.hero-overlay p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.start-button {
+  background-color: #f87f5a;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #e76b45;
+}
+
+.content-section {
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+.content-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3); /* adjust opacity as needed */
+  z-index: -1;
+}
+
+.content-one{
+  font-size: 2rem;
+  color:white;
+  margin-bottom: 30%;
+}
+
+.footer-section {
+  margin-top: auto;
+  background-color: #ffe7d9;
+  text-align: center;
+  padding: 2rem;
+}

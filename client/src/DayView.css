@@ -1,0 +1,265 @@
+.dayview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6rem 1rem 3rem;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+
+
+/* Simulated journal with center binding */
+.dayview-card {
+  background-image: url('/Paper-5.jpg'); /* paper texture */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 860px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  border: 2px solid #eee;
+  position: relative;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  background-blend-mode: lighten;
+}
+
+
+
+/* Optional centerfold line */
+.dayview-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+
+/* Header */
+.dayview-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: -1rem;
+}
+
+.journal-date {
+  font-family: 'Caveat', cursive;
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+
+/* Prompt label */
+.journal-prompt {
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  color: #555;
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+
+/* Text area */
+textarea {
+  font-family: Inter, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  min-height: 180px;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #CCCCCC;
+  background-color: #FDFAF7;
+  font-size: 1rem;
+  resize: vertical;
+  line-height: 1.5;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+
+/* Upload */
+.upload-btn {
+  background-color: #E76B45;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.upload-btn:hover {
+  background-color: #D85C3C;
+}
+
+
+/* Highlight checkbox */
+.highlight-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  color: #333333;
+}
+
+
+/* Tags */
+.tag-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: #EEEEEE;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tag.active {
+  background-color: #E76B45;
+  color: white;
+}
+
+
+/* Place input */
+.add-place {
+  padding: 0.75rem;
+  border: 1px solid #CCCCCC;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #FDFAF7;
+  width: 100%;
+}
+
+
+/* Save button */
+.save-btn {
+  background-color: #E76B45;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.save-btn:hover {
+  background-color: #D85C3C;
+}
+
+
+/* Back button */
+.back-button {
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.back-button:hover {
+  background-color: #D85C3C;
+}
+
+
+/* Photo previews */
+.image-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.image-preview-container {
+  position: relative;
+}
+
+.delete-preview-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(51, 51, 51, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-preview-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.delete-icon {
+  width: 25px;
+  height: 25px;
+  display: block;
+}
+
+.cheers-message {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #156e75;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 1000;
+  animation: fadeInOut 1.5s;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-20px);}
+  10% { opacity: 1; transform: translateX(-50%) translateY(0);}
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-20px);}
+}
