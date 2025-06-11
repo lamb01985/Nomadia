@@ -21,9 +21,10 @@ if TYPE_CHECKING:
 # Initialize S3 client
 s3 = boto3.client(
     "s3",
-    region_name="us-east-2",  # Default region, can be changed if needed
+    region_name="us-east-2",
     aws_access_key_id=AWS_ACCESS_KEY,
     aws_secret_access_key=AWS_SECRET_KEY,
+    endpoint_url=S3_ENDPOINT_URL,  
 )
 
 # Constants
