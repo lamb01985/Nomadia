@@ -48,7 +48,11 @@ from rich import print
 
 app = FastAPI()
 
-origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://nomadia-g6xc.onrender.com"
+]
 
 app.add_middleware(
     CORSMiddleware,
