@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./TripGenerate.css";
 import WeatherForecast from "./components/WeatherForecast";
 import Loading from "./components/Loading";
-import BASE_URL from "./config.js"
+import { BASE_URL } from './config.js';
 
 const TripGenerate = () => {
   const navigate = useNavigate();

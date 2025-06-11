@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import './TripSummary.css';
 import WeatherForecast from "./components/WeatherForecast";
 import GoogleMapComponent from './components/GoogleMap';
-import BASE_URL from "./config.js"
+import { BASE_URL } from './config.js';
 
 
 
