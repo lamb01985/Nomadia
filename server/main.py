@@ -48,6 +48,7 @@ from rich import print
 
 app = FastAPI()
 
+# CORS and session middleware
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
@@ -64,11 +65,11 @@ app.add_middleware(
 
 app.add_middleware(
     SessionMiddleware,
-    secret_key="some-random-string",
+    secret_key="some-random-string",  # Replace with a secure secret in production
     session_cookie="session",
-    max_age=60 * 60 * 2,
-    same_site="none",
-    https_only=True,
+    max_age=60 * 60 * 2,  # 2 hours
+    same_site="none",     # Required for cross-origin cookies
+    secure=True,          # Ensures cookie is only sent over HTTPS
 )
 
 app.include_router(openai_router)
