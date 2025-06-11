@@ -1,0 +1,35 @@
+
+  .weathercontainer {
+    padding: 1rem;
+    font-style: Arial, sans-serif;
+    font-size: small;
+  }
+
+  .weatherforecast{
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    gap: 1rem;
+  }
+  .weathercard{
+    flex: 1 1 25%;
+    background-color: #ffff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    min-width: 4em;
+    max-width: 100px;
+    max-height: 100%;
+  }
+  .weathericon{
+    font-size: 2rem;
+    margin: 0;
+  }
+  .weatherp{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    /* display: flex;
+    flex: 1 0 auto; */
+  }
