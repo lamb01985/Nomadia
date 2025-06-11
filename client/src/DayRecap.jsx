@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./DayRecap.css";
 import { BookOpen, MapPin, Tag, Image, Edit } from "lucide-react";
-import {BASE_URL} from "./config.js"
-
+import { BASE_URL } from "./config.js";
 
 const DayRecap = () => {
   const { id: dayId } = useParams();
@@ -20,13 +19,17 @@ const DayRecap = () => {
   useEffect(() => {
     const fetchJournal = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/days/${dayId}/recap`);
+        const response = await fetch(`${BASE_URL}/api/days/${dayId}/recap`, {
+          credentials: "include",
+        });
         const data = await response.json();
         setJournal(data.journal);
         setDay(data.day);
         setPlaces(data.places);
 
-        const photoRes = await fetch(`${BASE_URL}/api/days/${dayId}/photos`);
+        const photoRes = await fetch(`${BASE_URL}/api/days/${dayId}/photos`, {
+          credentials: "include",
+        });
         const photoData = await photoRes.json();
         setPhotos(photoData);
       } catch (err) {
@@ -68,10 +71,13 @@ const DayRecap = () => {
       await fetch(`${BASE_URL}/api/days/${dayId}/photos`, {
         method: 'POST',
         body: photoForm,
+        credentials: "include",
       });
     }
 
-    const photoRes = await fetch(`${BASE_URL}/api/days/${dayId}/photos`);
+    const photoRes = await fetch(`${BASE_URL}/api/days/${dayId}/photos`, {
+      credentials: "include",
+    });
     const photoData = await photoRes.json();
     setPhotos(photoData);
   };
@@ -80,6 +86,7 @@ const DayRecap = () => {
     try {
       const res = await fetch(`${BASE_URL}/api/photos/${photoId}`, {
         method: 'DELETE',
+        credentials: "include",
       });
       if (!res.ok) {
         alert('Failed to delete photo from server.');
@@ -120,21 +127,19 @@ const DayRecap = () => {
       const updatedJournal = await res.json();
       setJournal(updatedJournal);
 
-      // Update places (if you have an endpoint for this)
-
       for (const place of placesEdit.map((name, i) => ({
         id: places[i]?.id,
-        name
+        name,
       }))) {
         await fetch(`${BASE_URL}/api/places/${place.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: place.name })
+          body: JSON.stringify({ name: place.name }),
+          credentials: "include",
         });
       }
+
       setPlaces(placesEdit.map((name, i) => ({ id: places[i]?.id || i, name })));
-
-
       setEditMode(false);
     } catch (err) {
       alert("Error updating day recap.");
@@ -153,10 +158,8 @@ const DayRecap = () => {
             <Edit size={19} className="inline-icon" /> <span className="edit-label">Edit</span>
           </button>
         )}
-        {/* Left Column */}
         <div className="recap-left">
           <form onSubmit={handleEditSubmit}>
-            {/* Journal Entry */}
             <div className="recap-section recap-journal">
               <div className="recap-section-header journal-header">
                 <h4><BookOpen size={19} className="inline-icon" /> Today's Journal</h4>
@@ -168,7 +171,6 @@ const DayRecap = () => {
               )}
             </div>
 
-            {/* Places Visited */}
             <div className="recap-section">
               <div className="recap-section-header">
                 <h4><MapPin size={19} className="inline-icon" /> Places Visited</h4>
@@ -176,7 +178,7 @@ const DayRecap = () => {
               {editMode ? (
                 placesEdit.map((place, idx) => (
                   <input
-                  type="text"
+                    type="text"
                     key={idx}
                     value={place}
                     onChange={e => {
@@ -198,14 +200,13 @@ const DayRecap = () => {
               )}
             </div>
 
-            {/* Tags */}
             <div className="recap-section">
               <div className="recap-section-header">
                 <h4><Tag size={19} className="inline-icon" /> Tags</h4>
               </div>
               {editMode ? (
                 <input
-                type="text"
+                  type="text"
                   value={tagsEdit.join(",")}
                   onChange={e => setTagsEdit(e.target.value.split(",").map(t => t.trim()))}
                   placeholder="Comma separated tags"
@@ -223,7 +224,6 @@ const DayRecap = () => {
               )}
             </div>
 
-            {/* Trip Highlight box */}
             {journal?.highlight && (
               <div className="recap-section">
                 <div className="recap-section-header">
@@ -233,7 +233,6 @@ const DayRecap = () => {
               </div>
             )}
 
-            {/* Save/Cancel */}
             {editMode && (
               <div className="edit-btn-group">
                 <button type="submit" className="primary-btn dayrecap-save-button">Save</button>
@@ -243,7 +242,6 @@ const DayRecap = () => {
           </form>
         </div>
 
-        {/* Right Column: Photos */}
         <div className="recap-right">
           <div className="photo-grid">
             {photos.map((photo, idx) => (

@@ -11,9 +11,8 @@ import { BASE_URL } from './config';
  */
 export default function Login() {
   const [error, setError] = useState("");
-  const { refreshUser } = useAuth()
-  const  navigate  = useNavigate()
-
+  const { refreshUser } = useAuth();
+  const navigate = useNavigate();
 
   /**
    * Handles login form submission.
@@ -26,25 +25,21 @@ export default function Login() {
     const password = formData.get("password");
 
     try {
-    const res = await fetch(`${BASE_URL}/api/login`, { // API_BASE is defined here
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ email, password }),
-    });
+      const res = await fetch(`${BASE_URL}/api/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+        credentials: "include", // Ensures cookie-based session is set
+      });
 
-    if (res.ok) {
-      await refreshUser();
-      navigate("/");
-    } else {
-      const err = await res.json();
-      throw new Error(err.detail || "Login failed");
-    }
-
-    }
-
-
-    catch (err) {
+      if (res.ok) {
+        await refreshUser();     // Re-hydrates user session info
+        navigate("/");           // Redirects to homepage
+      } else {
+        const err = await res.json();
+        throw new Error(err.detail || "Login failed");
+      }
+    } catch (err) {
       setError(err.message);
     }
   }
@@ -52,8 +47,8 @@ export default function Login() {
   return (
     <main>
       <StyledEngineProvider injectFirst>
-        <App handleSubmit={handleSubmit}/>
-     </StyledEngineProvider>
+        <App handleSubmit={handleSubmit} />
+      </StyledEngineProvider>
     </main>
   );
 }

@@ -2,8 +2,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext.jsx";
-
-const API_BASE = "http://localhost:8000";
+import { BASE_URL as API_BASE } from "../config"; // Import dynamic base URL
 
 /**
  * AuthProvider component to manage user auth state and provide context.
@@ -14,11 +13,9 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-
-
   const refreshUser = useCallback(async () => {
-    const res = await fetch(`${API_BASE}/api/me`, { // API_BASE is defined here
-      credentials: "include",
+    const res = await fetch(`${API_BASE}/api/me`, {
+      credentials: "include", // Ensures session cookie is sent
     });
     if (res.ok) {
       setUser(await res.json());
@@ -31,22 +28,17 @@ export function AuthProvider({ children }) {
     refreshUser();
   }, [refreshUser]);
 
-
-
-
   const logout = async () => {
     await fetch(`${API_BASE}/api/logout`, {
       method: "GET",
-      credentials: "include",
+      credentials: "include", // Important for clearing the session
     });
     setUser(null);
     navigate("/");
   };
 
   return (
-    <AuthContext.Provider
-      value={{ user, refreshUser }}
-    >
+    <AuthContext.Provider value={{ user, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );
