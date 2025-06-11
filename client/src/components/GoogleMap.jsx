@@ -6,9 +6,6 @@ import {
   Pin
 } from '@vis.gl/react-google-maps';
 
-
-
-
 const PoiMarkers = ({ pois }) => (
   <>
     {pois.map((poi) => (
