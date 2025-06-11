@@ -69,7 +69,7 @@ app.add_middleware(
     session_cookie="session",
     max_age=60 * 60 * 2,  # 2 hours
     same_site="none",     # Required for cross-origin cookies
-    secure=True,          # Ensures cookie is only sent over HTTPS
+    https_only=True,          # Ensures cookie is only sent over HTTPS
 )
 
 app.include_router(openai_router)
