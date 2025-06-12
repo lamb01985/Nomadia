@@ -13,11 +13,13 @@ from config import (
     AWS_SECRET_KEY,
     S3_ENDPOINT_URL,
     BUCKET_NAME,
+    S3_PUBLIC_URL,
 )
 
 if TYPE_CHECKING:
     from fastapi import UploadFile
 
+print("Using AWS Key ID:", AWS_ACCESS_KEY)
 # Initialize S3 client
 s3 = boto3.client(
     "s3",
