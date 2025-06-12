@@ -4,7 +4,7 @@ import { useLocation, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import ReactDOM from "react-dom";
 import './NavBar.css';
-import { BASE_URL } from "../config.js"; // ✅ Fixed: use named import
+import { BASE_URL } from "../config.js"; // Fixed: use named import
 
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -13,8 +13,8 @@ function Navbar() {
 
   const handleLogout = async () => {
     const response = await fetch(`${BASE_URL}/api/logout`, {
-      method: "GET",            // ✅ Added: explicitly state method
-      credentials: "include",   // ✅ Correctly include credentials
+      method: "GET",            // Added: explicitly state method
+      credentials: "include",   // Correctly include credentials
     });
     if (!response.ok) {
       alert('Failed to logout');
